@@ -3,16 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing dependencies...
-      - npm install
+      - echo Installing Maven dependencies...
+      - mvn clean install -DskipTests
   build:
     commands:
-      - echo Build started on `date`
-      - npm run build
+      - echo Building the JAR file...
+      - mvn package
   post_build:
     commands:
       - echo Build completed successfully on `date`
 
 artifacts:
   files:
-    - '**/*'
+    - target/*.jar
